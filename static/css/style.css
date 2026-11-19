@@ -1,0 +1,481 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b1120;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #111827;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 30px 20px;
+    border-right: 1px solid #1e293b;
+}
+
+.logo h2 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #3b82f6;
+}
+
+.logo p {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.menu {
+    margin-top: 50px;
+}
+
+.menu-heading {
+    color: #64748b;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.nav-link {
+    color: #94a3b8;
+    padding: 13px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: block;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #1e3a8a;
+    color: #ffffff;
+}
+
+.profile {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+}
+
+.profile h5 {
+    font-size: 14px;
+}
+
+.profile p {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Main Content */
+
+.main-content {
+    margin-left: 250px;
+    padding: 40px;
+}
+
+.main-content h1 {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.main-content p {
+    color: #94a3b8;
+}
+
+/* Dashboard Header */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.topbar p {
+    color: #94a3b8;
+    margin-top: 8px;
+}
+
+.date-box {
+    background-color: #111827;
+    border: 1px solid #1e293b;
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #60a5fa;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* Dashboard Cards */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background-color: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-4px);
+}
+
+.stat-card p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.stat-card span {
+    color: #60a5fa;
+    font-size: 12px;
+}
+
+/* Welcome Card */
+
+.welcome-card {
+    background: linear-gradient(135deg, #172554, #111827);
+    border: 1px solid #1e3a8a;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.welcome-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.welcome-card p {
+    color: #94a3b8;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1000px) {
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .profile {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+}
+
+/* Task Manager */
+
+.back-link {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.task-form,
+.task-list {
+    background-color: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.task-form h4,
+.task-list h4 {
+    margin-bottom: 20px;
+}
+
+.task-form input,
+.task-form select {
+    background-color: #0b1120;
+    color: white;
+    border: 1px solid #334155;
+}
+
+.task-form input:focus,
+.task-form select:focus {
+    background-color: #0b1120;
+    color: white;
+    border-color: #3b82f6;
+    box-shadow: none;
+}
+
+.task-form select option {
+    background-color: #111827;
+    color: white;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.task-item h5 {
+    font-size: 16px;
+}
+
+.task-item small,
+.task-item p {
+    color: #94a3b8;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .task-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Expense Manager */
+
+.expense-total {
+    background: linear-gradient(135deg, #172554, #111827);
+    border: 1px solid #1e3a8a;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.expense-total p {
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.expense-total h2 {
+    color: #60a5fa;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Study Tracker */
+
+.study-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #1e293b;
+}
+
+.study-item h5 {
+    color: #ffffff;
+}
+
+.study-item p {
+    color: #94a3b8;
+    margin-top: 10px;
+}
+
+.study-progress {
+    width: 100%;
+    height: 12px;
+    accent-color: #3b82f6;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1e293b;
+}
+
+/* Habit Tracker */
+
+.habit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid #1e293b;
+}
+
+.habit-item h5 {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.habit-item small {
+    color: #94a3b8;
+}
+
+.habit-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.completed-label {
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .habit-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+.life-score-card {
+    border: 1px solid #2563eb;
+    background: linear-gradient(135deg, #101d38, #172b50);
+}
+
+.life-score-card h2 {
+    font-size: 36px;
+    color: #60a5fa;
+    margin: 12px 0;
+}
+
+.life-score-card h2 small {
+    font-size: 16px;
+    color: #94a3b8;
+}
+
+.life-score-card span {
+    color: #94a3b8;
+}
+
+/* ============================= */
+/* LIFEOS RESPONSIVE DESIGN       */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* Sidebar */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .menu-heading {
+        width: 100%;
+    }
+
+    .menu a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .profile {
+        display: none;
+    }
+
+    /* Main Content */
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+        width: 100%;
+    }
+
+    /* Dashboard */
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .topbar h1 {
+        font-size: 25px;
+    }
+
+    /* Cards */
+    .stat-card {
+        padding: 18px;
+    }
+
+    /* Analytics Charts */
+    canvas {
+        max-width: 100%;
+    }
+
+}
+
+/* Tablet screens */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}

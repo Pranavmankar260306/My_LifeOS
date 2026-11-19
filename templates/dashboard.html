@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back! Here's your daily overview.</p>
+    </div>
+
+    <div class="date-box">
+        PERSONAL WORKSPACE
+    </div>
+</div>
+
+<div class="dashboard-cards">
+    <div class="stat-card life-score-card">
+        <p>Today's Life Score</p>
+        <h2>{{ life_score }}<small>/100</small></h2>
+        <span>Your daily productivity score</span>
+    </div>
+
+<div class="welcome-card">
+
+    <h3>Today's Productivity Insight</h3>
+
+    {% if life_score >= 80 %}
+        <p>Excellent work! You're having a highly productive day. Keep it up!</p>
+
+    {% elif life_score >= 60 %}
+        <p>Good progress! You're doing well. A little more effort can make your day even better.</p>
+
+    {% elif life_score >= 40 %}
+        <p>You're making progress. Try completing a few more tasks and habits today.</p>
+
+    {% else %}
+        <p>A fresh opportunity awaits! Start with one small task and build your momentum.</p>
+    {% endif %}
+
+</div>
+
+
+    <div class="stat-card">
+        <p>Total Tasks</p>
+        <h2>{{ total_tasks }}</h2>
+        <span>{{ completed_tasks }} completed</span>
+    </div>
+
+    <div class="stat-card">
+        <p>Today's Expenses</p>
+        <h2>₹{{ "%.2f"|format(today_expenses) }}</h2>
+        <span>Daily spending</span>
+    </div>
+
+    <div class="stat-card">
+        <p>Study Hours</p>
+        <h2>{{ "%.1f"|format(study_hours) }} hrs</h2>
+        <span>Today's learning</span>
+    </div>
+
+    <div class="stat-card">
+        <p>Habits Today</p>
+        <h2>{{ completed_habits }}/{{ total_habits }}</h2>
+        <span>{{ "%.0f"|format(habit_percentage) }}% Completed</span>
+    </div>
+
+</div>
+
+<div class="welcome-card">
+    <h3>Your day. Your progress. Your control.</h3>
+    <p>
+        Stay organized, track your progress and make every day count.
+    </p>
+</div>
+
+{% endblock %}

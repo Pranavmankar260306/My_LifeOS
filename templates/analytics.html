@@ -1,0 +1,185 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h2 class="mb-2">Analytics</h2>
+    <p class="text-secondary mb-4">
+        Understand your productivity through real data.
+    </p>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="stat-card">
+                <h5>Task Status</h5>
+                <canvas id="taskChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="stat-card">
+                <h5>Expenses by Category</h5>
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="stat-card">
+                <h5>Study Hours - Last 7 Days</h5>
+                <canvas id="studyChart"></canvas>
+            </div>
+        </div>
+        <!-- Habit Consistency Chart -->
+        <div class="col-md-12">
+            <div class="stat-card">
+                <h5>Habit Consistency - Last 7 Days</h5>
+                <canvas id="habitChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Data received from Flask -->
+
+<script type="application/json" id="task-data">
+{
+    "labels": {{ task_labels | tojson }},
+    "values": {{ task_values | tojson }}
+}
+</script>
+
+<script type="application/json" id="expense-data">
+{
+    "labels": {{ expense_labels | tojson }},
+    "values": {{ expense_values | tojson }}
+}
+</script>
+
+<script type="application/json" id="study-data">
+{
+    "labels": {{ study_labels | tojson }},
+    "values": {{ study_values | tojson }}
+}
+</script>
+<script type="application/json" id="habit-data">
+{
+    "labels": {{ habit_labels | tojson }},
+    "values": {{ habit_values | tojson }}
+}
+</script>
+
+<script>
+
+const taskData = JSON.parse(
+    document.getElementById("task-data").textContent
+);
+
+const expenseData = JSON.parse(
+    document.getElementById("expense-data").textContent
+);
+
+const studyData = JSON.parse(
+    document.getElementById("study-data").textContent
+);
+
+// Task Status Chart
+
+new Chart(document.getElementById("taskChart"), {
+    type: "doughnut",
+    data: {
+        labels: taskData.labels,
+        datasets: [{
+            data: taskData.values,
+            backgroundColor: ["#2563eb", "#22c55e", "#f59e0b"]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+// Expense Chart
+
+new Chart(document.getElementById("expenseChart"), {
+    type: "bar",
+    data: {
+        labels: expenseData.labels,
+        datasets: [{
+            label: "Amount (₹)",
+            data: expenseData.values,
+            backgroundColor: "#3b82f6"
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Study Hours Chart
+
+new Chart(document.getElementById("studyChart"), {
+    type: "line",
+    data: {
+        labels: studyData.labels,
+        datasets: [{
+            label: "Study Hours",
+            data: studyData.values,
+            borderColor: "#3b82f6",
+            backgroundColor: "rgba(59, 130, 246, 0.15)",
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Habit Consistency Chart
+
+const habitData = JSON.parse(
+    document.getElementById("habit-data").textContent
+);
+
+new Chart(document.getElementById("habitChart"), {
+    type: "bar",
+    data: {
+        labels: habitData.labels,
+        datasets: [{
+            label: "Completed Habits",
+            data: habitData.values,
+            backgroundColor: "#22c55e"
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}
